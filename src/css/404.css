@@ -1,0 +1,78 @@
+@keyframes glitchTop {
+	2%,
+	64% {
+		transform: translate(2px, -2px);
+	}
+	4%,
+	60% {
+		transform: translate(-2px, 2px);
+	}
+	62% {
+		transform: translate(13px, -1px) skew(-13deg);
+	}
+}
+
+@keyframes glitch {
+	2%,
+	64% {
+		transform: translate(2px, 0) skew(0deg);
+	}
+	4%,
+	60% {
+		transform: translate(-2px, 0) skew(0deg);
+	}
+	62% {
+		transform: translate(0, 0) skew(5deg);
+	}
+}
+
+@keyframes glitchBotom {
+	2%,
+	64% {
+		transform: translate(-2px, 0);
+	}
+	4%,
+	60% {
+		transform: translate(-2px, 0);
+	}
+	62% {
+		transform: translate(-22px, 5px) skew(21deg);
+	}
+}
+
+body {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	background: #070707;
+	color: limegreen;
+	font-size: 96px;
+	letter-spacing: -7px;
+	font-family: rubik;
+}
+
+div {
+	animation: glitch 1s linear infinite;
+}
+
+div:before,
+div:after {
+	content: attr(title);
+	position: absolute;
+	left: 0;
+}
+
+div:before {
+	animation: glitchTop 1s linear infinite;
+	clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+div:after {
+	animation: glitchBotom 1.5s linear infinite;
+	clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+	-webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
